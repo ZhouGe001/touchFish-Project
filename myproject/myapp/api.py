@@ -1,4 +1,7 @@
 from ninja import NinjaAPI, Schema
+from . import models
+
+
 
 users = NinjaAPI()
 
@@ -16,5 +19,5 @@ class UsersInfoSchema(Schema):
     updated_at: str
 @users.get("/all_users", response=UsersInfoSchema)
 def all_users(request):
-    users = model.objects.all()
+    users = models.User.objects.all()
     return users
